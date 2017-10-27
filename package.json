@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "pug-it": "pug src",
+    "pug-it": "pug src -P",
     "puggy": "pug src -P -w"
   },
   "private": true,
