@@ -22,7 +22,7 @@ export class MockComponent implements OnInit, OnDestroy {
   }
 
   goHome() {
-    this.router.navigate(['home']).then(() => {
+    this.router.navigate(['/']).then(() => {
       this.appState.publishState('data from mock');
     });
   }
