@@ -1,10 +1,10 @@
 {
   "name": "angular2-project",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start" : "npm run puggy & ng serve",
+    "start": "npm run puggy & ng serve",
     "build": "npm run pug-it & ng build",
     "test": "ng test",
     "lint": "ng lint",
