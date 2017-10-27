@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {HomeComponent} from './home/home.component';
 import {MockComponent} from './mock_page/mock.component';
+import {AppStateService} from './common/app-state.service';
 
 @NgModule({
   imports: [
@@ -19,6 +20,9 @@ import {MockComponent} from './mock_page/mock.component';
     NavbarComponent,
     HomeComponent,
     MockComponent
+  ],
+  providers: [
+    AppStateService
   ],
   bootstrap: [AppComponent]
 })

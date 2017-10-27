@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AppStateService} from '../common/app-state.service';
+import {Router} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-home',
@@ -6,8 +9,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 
-export class HomeComponent {
-  doLol() {
-    console.log('doing lol in home');
+export class HomeComponent implements OnInit, OnDestroy {
+  subscription: Subscription;
+
+  constructor(public appState: AppStateService, private router: Router) {}
+
+  ngOnInit() {
+    this.subscription = this.appState.event.subscribe((res) => console.log('retrieve data from mock: ', res ? res : 'It\'s a Trap!'));
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  goMock() {
+    this.router.navigate(['mock']).then(() => {
+      this.appState.publishState('data from home');
+    });
   }
 }
