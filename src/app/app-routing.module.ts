@@ -4,19 +4,15 @@ import {HomeComponent} from './home/home.component';
 import {MockComponent} from './mock_page/mock.component';
 
 const appRoutes: Routes = <Routes>[
-  { path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  },
   {
-    path: 'home',
     component: HomeComponent,
-    data: { title: 'Page one' }
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/home'
   },
   {
     path: 'mock',
-    component: MockComponent,
-    data: { title: 'Mock' }
+    component: MockComponent
   }
 ];
 
