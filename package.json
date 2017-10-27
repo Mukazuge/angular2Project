@@ -5,10 +5,11 @@
   "scripts": {
     "ng": "ng",
     "start" : "npm run puggy & ng serve",
-    "build": "ng build",
+    "build": "npm run pug-it & ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "pug-it": "pug src",
     "puggy": "pug src -P -w"
   },
   "private": true,
