@@ -26,3 +26,20 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Trade-offs
+
+There are a few tradeoffs using this approach.
+
+1. No auto watching for new files
+When adding any new pug file after npm start, the new file is not watched. You need to restart dev server (stop and rerun npm start).
+
+2. Fail silently when hitting pug syntax error
+Since we start pug watch and dev-server concurrently, when there’s pug syntax error happens during development, you will see errors in terminal, but not on screen or browser console. Please beware of this, sometimes you got syntax error without knowing it, and spend hours to debug other area (you know what I mean).
+
+3. Need to manually create pug file if you use ng generate
+By default, angular-cli ng generate will generate HTML file for component. You need to rename or delete/create the HTML to pug file.
+
+# Pug implementation source
+pug implementation source [pug guide](https://hackernoon.com/using-pug-jade-with-angular-with-cli-5592b7ee24e6)
