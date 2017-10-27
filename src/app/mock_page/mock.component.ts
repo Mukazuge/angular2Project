@@ -14,7 +14,7 @@ export class MockComponent implements OnInit, OnDestroy {
   constructor(public appState: AppStateService, private router: Router) {}
 
   ngOnInit() {
-    this.subscription = this.appState.event.subscribe((res) => console.log('retrieve data from home: ', res));
+    this.subscription = this.appState.event.subscribe((res) => console.log('retrieve data from home: ', res ? res : 'It\'s a Trap!'));
   }
 
   ngOnDestroy() {
