@@ -33,11 +33,11 @@ export class SearchComponent {
     });
   }
 
-  findSpeech(id: number) {
-    this.speechService.getSpeech(id).subscribe((res) => {
+  findSpeech(searchParam: string) {
+    this.speechService.searchSpeech(searchParam).subscribe((res) => {
       console.log(res);
-      if (res.id) {
-        this.appStateService.publishState([res]);
+      if (res) {
+        this.appStateService.publishState(res);
       } else {
         console.log('id not Found: ', res);
       }

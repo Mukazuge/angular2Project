@@ -23,7 +23,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     // notify when a api request is success
     this.subscription = this.appState.event.subscribe((res) => {
       console.log(res);
+      if (Array.isArray(res)) {
+        this.speeches = res;
+      } else {
         this.getAllSpeeches();
+      }
     });
   }
 

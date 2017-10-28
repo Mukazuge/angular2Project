@@ -15,8 +15,8 @@ export class SpeechService {
     });
   }
 
-  getSpeech(id: number) {
-    return this.http.get(this.baseUrl + '/' + id).map(res => {
+  searchSpeech(param: string) {
+    return this.http.get(this.baseUrl + '/search/' + param).map(res => {
       return res.json();
     });
   }
