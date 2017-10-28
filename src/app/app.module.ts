@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { MockComponent } from './mock_page/mock.component';
 import { AppStateService } from './common/app-state.service';
+import { PageNotFoundComponent } from './page_not_found/page-not-found.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { AppStateService } from './common/app-state.service';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    MockComponent
+    MockComponent,
+    PageNotFoundComponent
   ],
   providers: [
     AppStateService
