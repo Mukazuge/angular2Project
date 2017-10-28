@@ -35,7 +35,12 @@ export class SearchComponent {
 
   findSpeech(id: number) {
     this.speechService.getSpeech(id).subscribe((res) => {
-      this.appStateService.publishState([res]);
+      console.log(res);
+      if (res.id) {
+        this.appStateService.publishState([res]);
+      } else {
+        console.log('id not Found: ', res);
+      }
     });
   }
 }

@@ -42,16 +42,4 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.speeches = res;
     });
   }
-
-  updateSpeech(id: number) {
-    this.speechService.updateSpeech(id, this.speech).subscribe((res) => {
-      console.log(res);
-    });
-  }
-
-  createSpeech() {
-    this.speechService.createSpeech(this.speech).subscribe((res) => {
-      console.log(res);
-    });
-  }
 }

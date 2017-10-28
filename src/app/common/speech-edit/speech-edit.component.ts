@@ -18,8 +18,13 @@ export class EditSpeechComponent {
   }
 
   submitSpeech(form: any) {
+    console.log(form);
     if (form.valid) {
-      console.log('form: ', form);
+      if (this.setSelectedSpeech.id) {
+        this.updateSpeech(this.setSelectedSpeech.id, this.setSelectedSpeech);
+      } else {
+        this.createSpeech(this.setSelectedSpeech);
+      }
     } else {
       console.log('no valid form inputs');
     }
@@ -31,10 +36,26 @@ export class EditSpeechComponent {
         console.log('deleting: ', res);
         this.appStateService.publishState(res);
       }, error => {
-        console.log(error);
+        console.log('error: ', error);
       });
     } else {
       console.log('select a field first!');
     }
+  }
+
+  updateSpeech(id: number, payload) {
+    this.speechService.updateSpeech(id, payload).subscribe((res) => {
+      this.appStateService.publishState(res);
+    });
+  }
+
+  createSpeech(payload) {
+    this.speechService.createSpeech(payload).subscribe((res) => {
+      this.appStateService.publishState(res);
+    });
+  }
+
+  resetAll(form: any) {
+    this.setSelectedSpeech = new SpeechModel();
   }
 }

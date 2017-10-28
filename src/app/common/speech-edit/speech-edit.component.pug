@@ -7,4 +7,5 @@ form.form-group.d-flex.flex-column(#speechForm='ngForm' '(ngSubmit)'='submitSpee
     div.d-flex.justify-content-around
         button.btn.btn-success.text-uppercase save
         button.btn.btn-danger.text-uppercase(type='button' '(click)'='deleteSpeech()') delete
+        button.btn.btn-secondary.text-uppercase(type='button' '(click)'='resetAll(speechForm)') clear
         button.btn.btn-primary(type='button') Share
