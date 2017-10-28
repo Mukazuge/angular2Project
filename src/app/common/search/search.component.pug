@@ -1,3 +1,5 @@
 form.d-flex(#searchForm='ngForm' '(ngSubmit)'='doSearch(search)')
-    input.mr-2.form-control.text-center('[placeholder]'='searchPlaceHolder' name='search' '[(ngModel)]'='search' '(change)'='doSearch(search)')
-    button.btn.btn-primary('[hidden]'='hideButton') {{buttonText}}
+    .input-group
+      span.input-group-addon
+        i.fa.fa-search(aria-hidden='true')
+      input.mr-2.form-control.text-center('[placeholder]'='searchPlaceHolder' name='search' '[(ngModel)]'='search' '(change)'='doSearch(search)')

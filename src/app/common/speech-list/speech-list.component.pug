@@ -1,7 +1,11 @@
 section#speech-list
     .card
         .card-header
-            app-search.d-flex('(onSearch)'='onSearch($event)' '[hideButton]'='true' buttonText='Search')
+            button.btn.btn-primary.text-uppercase
+                span.pr-2
+                    i.fa.fa-plus
+                | create
+
         ul.list-group
             li.list-group-item(
                 *ngFor='let speech of speeches',
@@ -9,3 +13,6 @@ section#speech-list
                 '[ngClass]'="{'active': speech === selectedSpeech}")
                     .author Author: {{speech.author}}
                     .subject Subject: {{speech.subject}}
+
+        .card-footer
+            app-search('(onSearch)'='onSearch($event)')

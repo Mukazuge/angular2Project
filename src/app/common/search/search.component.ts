@@ -11,10 +11,6 @@ import { SpeechService } from '../speech.service';
 export class SearchComponent {
   @Input()
   public searchPlaceHolder = 'Search';
-  @Input()
-  public hideButton = false;
-  @Input()
-  public buttonText = 'Go';
   search = null;
 
   constructor(private appStateService: AppStateService, public speechService: SpeechService) {}
