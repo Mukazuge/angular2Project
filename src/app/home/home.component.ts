@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AppStateService} from '../common/app-state.service';
 import {Subscription} from 'rxjs/Subscription';
+import { mockSpeeches} from '../common/mock-data';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,7 @@ import {Subscription} from 'rxjs/Subscription';
 
 export class HomeComponent implements OnInit, OnDestroy {
   subscription: Subscription;
+  speeches = mockSpeeches;
 
   constructor(public appState: AppStateService) {}
 

@@ -1,4 +1,4 @@
-export const mock: any = [
+export const mockSpeeches: any = [
   {
     id: 0,
     author: 'Kenedy',
