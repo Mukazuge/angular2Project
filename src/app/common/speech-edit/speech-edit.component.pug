@@ -10,31 +10,57 @@ section
                 .form-group
                     label Start writing your speech
                     textarea.form-control(placeholder='Ex. Join me and my team to help you break through all adversity.'
-                        name='speechContent' '[(ngModel)]'='setSelectedSpeech.content' required)
+                        name='speechContent' '[(ngModel)]'='setSelectedSpeech.content'
+                        '[disabled]'='!isEditable'
+                        required)
 
                 .form-group
                     .row
                         .col-lg-4
                             label Author
-                            input.form-control(placeholder='Ex. Kenedy' name='author' '[(ngModel)]'='setSelectedSpeech.author' required)
+                            input.form-control(placeholder='Ex. Kenedy' name='author'
+                                '[(ngModel)]'='setSelectedSpeech.author'
+                                '[disabled]'='!isEditable'
+                                required)
                         .col-lg-4
                             label Subject
-                            input.form-control(placeholder='Ex. I have a dream' name='subject' '[(ngModel)]'='setSelectedSpeech.subject' required)
+                            input.form-control(placeholder='Ex. I have a dream'
+                                name='subject'
+                                '[(ngModel)]'='setSelectedSpeech.subject'
+                                '[disabled]'='!isEditable'
+                                required)
                         .col-lg-4
                             label Date
-                            input.form-control(type='date' name='saveDate' '[(ngModel)]'='setSelectedSpeech.date' required)
+                            input.form-control(type='date'
+                                name='saveDate'
+                                '[(ngModel)]'='setSelectedSpeech.date'
+                                '[disabled]'='!isEditable'
+                                required)
 
             .card-footer
-                .float-left
-                    button.btn.btn-success.text-uppercase
+                div(*ngIf='isEditable')
+                    button.btn.btn-success.text-uppercase.float-left
                         span.pr-2
                             i.fa.fa-floppy-o
                         | save
+
+                    button.btn.btn-secondary.text-uppercase.float-right(type='button' '(click)'='resetAll()')
+                        span.pr-2
+                            i.fa.fa-eraser
+                        | clear
+
+                    button.btn.btn-secondary.text-uppercase.float-right.mr-2(type='button' '(click)'='isEditable = false')
+                        span.pr-2
+                            i.fa.fa-ban
+                        | cancel
+
+                .float-right(*ngIf='!isEditable')
+                    button.btn.btn-success.text-uppercase('(click)'='isEditable = true')
+                        span.pr-2
+                            i.fa.fa-edit
+                        | Edit
+
                     button.btn.btn-danger.text-uppercase(type='button' '(click)'='deleteSpeech()')
                         span.pr-2
                             i.fa.fa-trash-o
                         | delete
-                button.btn.btn-secondary.text-uppercase.float-right(type='button' '(click)'='resetAll()')
-                    span.pr-2
-                        i.fa.fa-eraser
-                    | clear

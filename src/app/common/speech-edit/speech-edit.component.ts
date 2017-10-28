@@ -12,6 +12,7 @@ import { AppStateService } from '../app-state.service';
 export class EditSpeechComponent {
   @Input()
   public setSelectedSpeech: SpeechModel;
+  isEditable: false;
 
   constructor(public speechService: SpeechService, public appStateService: AppStateService) {
     this.setSelectedSpeech = new SpeechModel();
