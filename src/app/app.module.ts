@@ -14,6 +14,7 @@ import { SpeechListComponent } from './common/speech-list/speech-list.component'
 import { EditSpeechComponent } from './common/speech-edit/speech-edit.component';
 import { SpeechService } from './common/speech.service';
 import { HttpModule } from '@angular/http';
+import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { HttpModule } from '@angular/http';
     BrowserModule,
     FormsModule,
     HttpModule,
+    Angular2FontawesomeModule,
     NgbModule.forRoot()
   ],
   declarations: [
