@@ -13,12 +13,14 @@ import { SearchComponent } from './common/search/search.component';
 import { SpeechListComponent } from './common/speech-list/speech-list.component';
 import { EditSpeechComponent } from './common/speech-edit/speech-edit.component';
 import { SpeechService } from './common/speech.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   imports: [
     AppRoutingModule,
     BrowserModule,
     FormsModule,
+    HttpModule,
     NgbModule.forRoot()
   ],
   declarations: [
