@@ -1,3 +1,11 @@
-section
-    ul
-        li(*ngFor='let speech of speeches' '(click)'='selectSpeech(speech)') {{speech.subject}}
+section#speech-list
+    .card
+        .card-header
+            app-search.d-flex('(onSearch)'='onSearch($event)' '[hideButton]'='true' buttonText='Search')
+        ul.list-group
+            li.list-group-item(
+                *ngFor='let speech of speeches',
+                '(click)'='selectSpeech(speech)',
+                '[ngClass]'="{'active': speech === selectedSpeech}")
+                    .author Author: {{speech.author}}
+                    .subject Subject: {{speech.subject}}

@@ -8,12 +8,21 @@ import {SpeechModel} from '../Speech.model';
 })
 
 export class SpeechListComponent {
+  selectedSpeech: SpeechModel;
+
   @Output()
   public getSelectedSpeech: EventEmitter<any> = new EventEmitter();
   @Input()
   public speeches: Array<SpeechModel> = [];
 
   selectSpeech(speech: SpeechModel) {
+    this.selectedSpeech = speech;
     this.getSelectedSpeech.emit(speech);
+  }
+
+  onSearch(event: any) {
+    if (event.searchParam !== '') {
+      console.log(event.searchParam);
+    }
   }
 }
