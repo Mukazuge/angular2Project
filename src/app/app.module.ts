@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from './page_not_found/page-not-found.component
 import { SearchComponent } from './common/search/search.component';
 import { SpeechListComponent } from './common/speech-list/speech-list.component';
 import { EditSpeechComponent } from './common/speech-edit/speech-edit.component';
+import { SpeechService } from './common/speech.service';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { EditSpeechComponent } from './common/speech-edit/speech-edit.component'
     EditSpeechComponent
   ],
   providers: [
-    AppStateService
+    AppStateService,
+    SpeechService
   ],
   bootstrap: [AppComponent]
 })

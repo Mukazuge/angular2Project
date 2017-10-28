@@ -20,7 +20,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscription = this.appState.event.subscribe((res) => console.log('search is: ', res ? res : 'It\'s a Trap!'));
+    this.subscription = this.appState.event.subscribe((res) => {
+      if (res) {
+        console.log('search is: ', res);
+      }
+    });
   }
 
   ngOnDestroy() {

@@ -14,7 +14,7 @@ export class SearchComponent {
   public hideButton = false;
   @Input()
   public buttonText = 'Go';
-  search = '';
+  search = null;
 
   constructor(private appStateService: AppStateService) {}
 
