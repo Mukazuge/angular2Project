@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { AppStateService } from '../app-state.service';
 
 @Component({
   selector: 'app-search',
@@ -13,15 +14,13 @@ export class SearchComponent {
   public hideButton = false;
   @Input()
   public buttonText = 'Go';
-  @Output()
-  public onSearch: EventEmitter<any> = new EventEmitter();
   search = '';
 
-  public doSearch(param: any) {
-    if (param.value !== '') {
-      this.onSearch.emit({
-        searchParam: param
-      });
+  constructor(private appStateService: AppStateService) {}
+
+  doSearch(param: any) {
+    if (param !== '') {
+      this.appStateService.publishState(param);
     }
   }
 }

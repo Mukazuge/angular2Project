@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { MockComponent } from './mock_page/mock.component';
 import { AppStateService } from './common/app-state.service';
 import { PageNotFoundComponent } from './page_not_found/page-not-found.component';
 import { SearchComponent } from './common/search/search.component';
@@ -23,7 +22,6 @@ import { SearchComponent } from './common/search/search.component';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    MockComponent,
     PageNotFoundComponent,
     SearchComponent
   ],
