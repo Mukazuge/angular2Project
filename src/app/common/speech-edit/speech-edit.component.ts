@@ -55,7 +55,7 @@ export class EditSpeechComponent {
     });
   }
 
-  resetAll(form: any) {
+  resetAll() {
     this.setSelectedSpeech = new SpeechModel();
   }
 }
