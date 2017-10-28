@@ -1,7 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AppStateService} from '../common/app-state.service';
-import {Subscription} from 'rxjs/Subscription';
-import { mockSpeeches} from '../common/mock-data';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AppStateService } from '../common/app-state.service';
+import { Subscription } from 'rxjs/Subscription';
+import { mockSpeeches } from '../common/mock-data';
+import { SpeechModel } from '../common/Speech.model';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +13,11 @@ import { mockSpeeches} from '../common/mock-data';
 export class HomeComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   speeches = mockSpeeches;
+  speech: SpeechModel;
 
-  constructor(public appState: AppStateService) {}
+  constructor(public appState: AppStateService) {
+    this.speech = new SpeechModel();
+  }
 
   ngOnInit() {
     this.subscription = this.appState.event.subscribe((res) => console.log('search is: ', res ? res : 'It\'s a Trap!'));
@@ -21,5 +25,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  getSelectedSpeech(event: SpeechModel) {
+    this.speech = event;
   }
 }

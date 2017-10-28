@@ -1,4 +1,5 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {SpeechModel} from '../Speech.model';
 
 @Component({
   selector: 'app-speech-list',
@@ -7,6 +8,12 @@ import {Component, Input} from '@angular/core';
 })
 
 export class SpeechListComponent {
+  @Output()
+  public getSelectedSpeech: EventEmitter<any> = new EventEmitter();
   @Input()
-  public speeches = [];
+  public speeches: Array<SpeechModel> = [];
+
+  selectSpeech(speech: SpeechModel) {
+    this.getSelectedSpeech.emit(speech);
+  }
 }

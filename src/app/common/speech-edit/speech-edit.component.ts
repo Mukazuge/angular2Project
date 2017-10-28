@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {SpeechModel} from './Speech.model';
+import {Component, Input} from '@angular/core';
+import {SpeechModel} from '../Speech.model';
 
 @Component({
   selector: 'app-edit-speech',
@@ -8,10 +8,11 @@ import {SpeechModel} from './Speech.model';
 })
 
 export class EditSpeechComponent {
-  speechModel: SpeechModel;
+  @Input()
+  public setSelectedSpeech: SpeechModel;
 
   constructor() {
-    this.speechModel = new SpeechModel();
+    this.setSelectedSpeech = new SpeechModel();
   }
 
   submitSpeech(form: any) {
