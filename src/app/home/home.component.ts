@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AppStateService } from '../common/app-state.service';
 import { Subscription } from 'rxjs/Subscription';
-import { mockSpeeches } from '../common/mock-data';
 import { SpeechModel } from '../common/Speech.model';
 import { SpeechService } from '../common/speech.service';
 
@@ -41,12 +40,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   getAllSpeeches() {
     this.speechService.getAllSpeeches().subscribe((res) => {
       this.speeches = res;
-    });
-  }
-
-  deleteSpeech(id: number) {
-    this.speechService.deleteSpeech(id).subscribe((res) => {
-      console.log(res);
     });
   }
 

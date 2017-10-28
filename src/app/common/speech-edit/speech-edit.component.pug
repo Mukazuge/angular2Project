@@ -6,5 +6,5 @@ form.form-group.d-flex.flex-column(#speechForm='ngForm' '(ngSubmit)'='submitSpee
         input.form-control(placeholder='mm / dd / yyyy' type='date' name='saveDate' '[(ngModel)]'='setSelectedSpeech.date' required)
     div.d-flex.justify-content-around
         button.btn.btn-success.text-uppercase save
-        button.btn.btn-danger.text-uppercase(type='button') delete
+        button.btn.btn-danger.text-uppercase(type='button' '(click)'='deleteSpeech()') delete
         button.btn.btn-primary(type='button') Share

@@ -1,5 +1,7 @@
-import {Component, Input} from '@angular/core';
-import {SpeechModel} from '../Speech.model';
+import { Component, Input } from '@angular/core';
+import { SpeechModel } from '../Speech.model';
+import { SpeechService } from '../speech.service';
+import { AppStateService } from '../app-state.service';
 
 @Component({
   selector: 'app-edit-speech',
@@ -11,7 +13,7 @@ export class EditSpeechComponent {
   @Input()
   public setSelectedSpeech: SpeechModel;
 
-  constructor() {
+  constructor(public speechService: SpeechService, public appStateService: AppStateService) {
     this.setSelectedSpeech = new SpeechModel();
   }
 
@@ -20,6 +22,19 @@ export class EditSpeechComponent {
       console.log('form: ', form);
     } else {
       console.log('no valid form inputs');
+    }
+  }
+
+  deleteSpeech() {
+    if (this.setSelectedSpeech.id) {
+      this.speechService.deleteSpeech(this.setSelectedSpeech.id).subscribe((res) => {
+        console.log('deleting: ', res);
+        this.appStateService.publishState(res);
+      }, error => {
+        console.log(error);
+      });
+    } else {
+      console.log('select a field first!');
     }
   }
 }
