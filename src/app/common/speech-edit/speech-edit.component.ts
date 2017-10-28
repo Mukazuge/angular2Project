@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { SpeechModel } from '../Speech.model';
 import { SpeechService } from '../speech.service';
 import { AppStateService } from '../app-state.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-edit-speech',
@@ -9,13 +10,26 @@ import { AppStateService } from '../app-state.service';
   styleUrls: ['./speech-edit.component.scss']
 })
 
-export class EditSpeechComponent {
+export class EditSpeechComponent implements OnInit, OnDestroy {
   @Input()
   public setSelectedSpeech: SpeechModel;
   isEditable: false;
+  subscription: Subscription;
 
   constructor(public speechService: SpeechService, public appStateService: AppStateService) {
     this.setSelectedSpeech = new SpeechModel();
+  }
+
+  ngOnInit() {
+    this.subscription = this.appStateService.editSpeechSubject.subscribe((res) => {
+      console.log(res);
+      this.resetAll();
+      this.isEditable = res;
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   submitSpeech(form: any) {

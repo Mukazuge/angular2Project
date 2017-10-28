@@ -1,6 +1,7 @@
 section#home
     .row
         .col-sm-3.pr-0
-            app-speech-list#list('[speeches]'='speeches' '(getSelectedSpeech)'='getSelectedSpeech($event)')
+            app-speech-list#list('[speeches]'='speeches'
+                '(getSelectedSpeech)'='getSelectedSpeech($event)')
         .col-sm-9
             app-edit-speech#editing('[setSelectedSpeech]'='speech')

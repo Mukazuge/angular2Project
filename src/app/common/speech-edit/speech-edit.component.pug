@@ -10,7 +10,9 @@ section
                 .form-group
                     label Start writing your speech
                     textarea.form-control(placeholder='Ex. Join me and my team to help you break through all adversity.'
-                        name='speechContent' '[(ngModel)]'='setSelectedSpeech.content'
+                        name='speechContent'
+                        rows='4'
+                        '[(ngModel)]'='setSelectedSpeech.content'
                         '[disabled]'='!isEditable'
                         required)
 

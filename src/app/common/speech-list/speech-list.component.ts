@@ -1,5 +1,6 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {SpeechModel} from '../Speech.model';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { SpeechModel } from '../Speech.model';
+import { AppStateService } from '../app-state.service';
 
 @Component({
   selector: 'app-speech-list',
@@ -8,12 +9,13 @@ import {SpeechModel} from '../Speech.model';
 })
 
 export class SpeechListComponent {
-  selectedSpeech: SpeechModel;
-
   @Output()
   public getSelectedSpeech: EventEmitter<any> = new EventEmitter();
   @Input()
   public speeches: Array<SpeechModel> = [];
+  selectedSpeech: SpeechModel;
+
+  constructor(public appStateService: AppStateService) {}
 
   selectSpeech(speech: SpeechModel) {
     this.selectedSpeech = speech;
@@ -24,5 +26,10 @@ export class SpeechListComponent {
     if (event.searchParam !== '') {
       console.log(event.searchParam);
     }
+  }
+
+  onCreateSpeech() {
+    // call app state to create a speech
+    this.appStateService.publishEditSpeech(true);
   }
 }
