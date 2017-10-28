@@ -1,0 +1,10 @@
+form.form-group.d-flex.flex-column(#speechForm='ngForm' '(ngSubmit)'='submitSpeech(speechForm)')
+    textarea.form-control(placeholder='Start writing your speech' name='speechContent' '[(ngModel)]'='speechModel.content' required)
+    div.d-flex.justify-content-around
+        input.form-control(placeholder='Author' name='author' '[(ngModel)]'='author' required)
+        input.form-control(placeholder='Subject' name='subject' '[(ngModel)]'='speechModel.subject' required)
+        input.form-control(placeholder='mm / dd / yyyy' type='date' name='saveDate' '[(ngModel)]'='speechModel.date' required)
+    div.d-flex.justify-content-around
+        button.btn.btn-success.text-uppercase save
+        button.btn.btn-danger.text-uppercase(type='button') delete
+        button.btn.btn-primary(type='button') Share

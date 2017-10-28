@@ -10,7 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { AppStateService } from './common/app-state.service';
 import { PageNotFoundComponent } from './page_not_found/page-not-found.component';
 import { SearchComponent } from './common/search/search.component';
-import {SpeechListComponent} from './common/speech-list/speech-list.component';
+import { SpeechListComponent } from './common/speech-list/speech-list.component';
+import { EditSpeechComponent } from './common/speech-edit/speech-edit.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import {SpeechListComponent} from './common/speech-list/speech-list.component';
     HomeComponent,
     PageNotFoundComponent,
     SearchComponent,
-    SpeechListComponent
+    SpeechListComponent,
+    EditSpeechComponent
   ],
   providers: [
     AppStateService
