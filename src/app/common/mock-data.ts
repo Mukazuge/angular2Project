@@ -1,9 +1,8 @@
 export const mock: any = [
   {
     id: 0,
-    name: 'speech 0',
     author: 'Kenedy',
-    subject: 'win area A',
+    subject: 'speech 0',
     date: '10/10/2017',
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et' +
     ' dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea' +
@@ -13,9 +12,8 @@ export const mock: any = [
   },
   {
     id: 1,
-    name: 'speech 1',
     author: 'Obama',
-    subject: 'win area B',
+    subject: 'speech 1',
     date: '05/21/2011',
     content: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti' +
     ' atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt' +
@@ -24,9 +22,8 @@ export const mock: any = [
   },
   {
     id: 2,
-    name: 'speech 2',
     author: 'Calderon',
-    subject: 'win area C',
+    subject: 'speech 2',
     date: '07/11/2013',
     content: 'quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,' +
     ' nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam' +
@@ -34,9 +31,8 @@ export const mock: any = [
   },
   {
     id: 3,
-    name: 'speech 3',
+    subject: 'speech 3',
     author: 'Clinton',
-    subject: 'win area D',
     date: '02/22/2015',
     content: 'orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore' +
     ' magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat' +
@@ -45,9 +41,8 @@ export const mock: any = [
   },
   {
     id: 4,
-    name: 'speech 4',
+    subject: 'speech 4',
     author: 'Fidel',
-    subject: 'win area E',
     date: '10/01/2010',
     content: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem' +
     ' aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo' +
