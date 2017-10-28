@@ -46,23 +46,19 @@ section
                             i.fa.fa-floppy-o
                         | save
 
-                    button.btn.btn-secondary.text-uppercase.float-right(type='button' '(click)'='resetAll()')
-                        span.pr-2
-                            i.fa.fa-eraser
-                        | clear
 
-                    button.btn.btn-secondary.text-uppercase.float-right.mr-2(type='button' '(click)'='isEditable = false')
+                    button.btn.btn-danger.text-uppercase.float-right(type='button' '(click)'='isEditable = false')
                         span.pr-2
                             i.fa.fa-ban
                         | cancel
 
-                .float-right(*ngIf='!isEditable')
-                    button.btn.btn-success.text-uppercase('(click)'='isEditable = true')
+                div(*ngIf='!isEditable')
+                    button.btn.btn-success.text-uppercase.float-left('(click)'='isEditable = true')
                         span.pr-2
                             i.fa.fa-edit
                         | Edit
 
-                    button.btn.btn-danger.text-uppercase(type='button' '(click)'='deleteSpeech()')
+                    button.btn.btn-danger.text-uppercase.float-right(type='button' '(click)'='deleteSpeech()')
                         span.pr-2
                             i.fa.fa-trash-o
                         | delete

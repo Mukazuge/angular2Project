@@ -1,7 +1,7 @@
 section#speech-list
     .card
-        .card-header
-            button.btn.btn-primary.text-uppercase('(click)'='onCreateSpeech()')
+        .card-header.p-0
+            button.btn.btn-primary.btn-block.text-uppercase('(click)'='onCreateSpeech()')
                 span.pr-2
                     i.fa.fa-plus
                 | create
@@ -14,5 +14,5 @@ section#speech-list
                     .author Author: {{speech.author}}
                     .subject Subject: {{speech.subject}}
 
-        .card-footer
+        .card-footer.p-1
             app-search('(onSearch)'='onSearch($event)')
