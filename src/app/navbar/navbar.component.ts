@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 
 export class NavbarComponent {
   onSearch(event: any) {
-    console.log(event.searchParam);
+    if (event.searchParam !== '') {
+      console.log(event.searchParam);
+    }
   }
 }

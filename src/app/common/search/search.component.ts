@@ -10,7 +10,7 @@ export class SearchComponent {
   @Input()
   public searchPlaceHolder = 'Search';
   @Input()
-  public show = false;
+  public hideButton = false;
   @Input()
   public buttonText = 'Go';
   @Output()

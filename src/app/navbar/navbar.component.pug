@@ -5,4 +5,4 @@ nav.d-flex.justify-content-between
         li.nav-item.pointer(routerLinkActive='active', #current='routerLinkActive', '[routerLinkActiveOptions]'='{exact: true}')
             a.nav-link(routerLink='/mock', href='javascript:;') Mock
 
-    app-search.d-flex(searchPlaceHolder='Search Speech', '(onSearch)'='onSearch($event)')
+    app-search.d-flex(searchPlaceHolder='Search Speech', '(onSearch)'='onSearch($event)', '[hideButton]'='false', buttonText='Search')
