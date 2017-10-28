@@ -1,32 +1,40 @@
 section
-    .alert.alert-success(role='alert')
-        strong Well done!
-        |  You successfully read 
-        a.alert-link(href='#') this important alert message
-        | .
-    .alert.alert-info(role='alert')
-        strong Heads up!
-        |  This
-        a.alert-link(href='#') alert needs your attention
-        | , but it's not super important.
-    .alert.alert-warning(role='alert')
-        strong Warning!
-        |  Better check yourself, you're
-        a.alert-link(href='#') not looking too good
-        | .
-    .alert.alert-danger(role='alert')
-        strong Oh snap!
-        a.alert-link(href='#') Change a few things up
-        |  and try submitting again.
+    form.form-group(#speechForm='ngForm' '(ngSubmit)'='submitSpeech(speechForm)' novalidate)
+        .card
+            .card-header.text-capitalize speech editor
+                button.btn.btn-primary.float-right(type='button')
+                    span.pr-2
+                        i.fa.fa-share-alt
+                    | Share
+            .card-block
+                .form-group
+                    label Start writing your speech
+                    textarea.form-control(placeholder='Ex. Join me and my team to help you break through all adversity.'
+                        name='speechContent' '[(ngModel)]'='setSelectedSpeech.content' required)
 
-    form.form-group.d-flex.flex-column(#speechForm='ngForm' '(ngSubmit)'='submitSpeech(speechForm)' novalidate)
-        textarea.form-control.d-flex(placeholder='Start writing your speech' name='speechContent' '[(ngModel)]'='setSelectedSpeech.content' required)
-        div.d-flex.justify-content-around
-            input.form-control(placeholder='Author' name='author' '[(ngModel)]'='setSelectedSpeech.author' required)
-            input.form-control(placeholder='Subject' name='subject' '[(ngModel)]'='setSelectedSpeech.subject' required)
-            input.form-control(placeholder='mm / dd / yyyy' type='date' name='saveDate' '[(ngModel)]'='setSelectedSpeech.date' required)
-        div.d-flex.justify-content-around
-            button.btn.btn-success.text-uppercase save
-            button.btn.btn-danger.text-uppercase(type='button' '(click)'='deleteSpeech()') delete
-            button.btn.btn-secondary.text-uppercase(type='button' '(click)'='resetAll()') clear
-            button.btn.btn-primary(type='button') Share
+                .form-group
+                    .row
+                        .col-lg-4
+                            label Author
+                            input.form-control(placeholder='Ex. Kenedy' name='author' '[(ngModel)]'='setSelectedSpeech.author' required)
+                        .col-lg-4
+                            label Subject
+                            input.form-control(placeholder='Ex. I have a dream' name='subject' '[(ngModel)]'='setSelectedSpeech.subject' required)
+                        .col-lg-4
+                            label Date
+                            input.form-control(type='date' name='saveDate' '[(ngModel)]'='setSelectedSpeech.date' required)
+
+            .card-footer
+                .float-left
+                    button.btn.btn-success.text-uppercase
+                        span.pr-2
+                            i.fa.fa-floppy-o
+                        | save
+                    button.btn.btn-danger.text-uppercase(type='button' '(click)'='deleteSpeech()')
+                        span.pr-2
+                            i.fa.fa-trash-o
+                        | delete
+                button.btn.btn-secondary.text-uppercase.float-right(type='button' '(click)'='resetAll()')
+                    span.pr-2
+                        i.fa.fa-eraser
+                    | clear
