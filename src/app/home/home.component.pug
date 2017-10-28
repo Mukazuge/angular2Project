@@ -1,3 +1,6 @@
-section.d-flex
-    app-speech-list#list.pt-3('[speeches]'='speeches' '(getSelectedSpeech)'='getSelectedSpeech($event)')
-    app-edit-speech#editing.p-3('[setSelectedSpeech]'='speech')
+section#home
+    .row
+        .col-sm-3.pr-0
+            app-speech-list#list('[speeches]'='speeches' '(getSelectedSpeech)'='getSelectedSpeech($event)')
+        .col-sm-9
+            app-edit-speech#editing('[setSelectedSpeech]'='speech')
