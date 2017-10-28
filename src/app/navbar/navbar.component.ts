@@ -7,9 +7,5 @@ import { Component } from '@angular/core';
 })
 
 export class NavbarComponent {
-  onSearch(event: any) {
-    if (event.searchParam !== '') {
-      console.log(event.searchParam);
-    }
-  }
+  logoUrl = '../../assets/img/logo.png';
 }
