@@ -1,8 +1,8 @@
-nav.d-flex.justify-content-between.align-items-center
+nav.d-flex.justify-content-between
     ul.nav
         li.nav-item.pointer(routerLinkActive='active', #current='routerLinkActive', '[routerLinkActiveOptions]'='{exact: true}')
             a.nav-link(routerLink='/', href='javascript:;') Home
         li.nav-item.pointer(routerLinkActive='active', #current='routerLinkActive', '[routerLinkActiveOptions]'='{exact: true}')
             a.nav-link(routerLink='/mock', href='javascript:;') Mock
 
-    input(placeholder='Search')
+    app-search.d-flex(searchPlaceHolder='Search Speech', '(onSearch)'='onSearch($event)')
