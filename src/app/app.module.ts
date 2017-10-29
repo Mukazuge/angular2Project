@@ -17,6 +17,8 @@ import { HttpModule } from '@angular/http';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 import { WarningModalComponent } from './common/warning-modal.component/warning-modal.component';
 
+import { EscapeHtmlPipe } from './common/escape-html.pipe';
+
 @NgModule({
   imports: [
     AppRoutingModule,
@@ -34,7 +36,8 @@ import { WarningModalComponent } from './common/warning-modal.component/warning-
     SearchComponent,
     SpeechListComponent,
     EditSpeechComponent,
-    WarningModalComponent
+    WarningModalComponent,
+    EscapeHtmlPipe
   ],
   providers: [
     AppStateService,
