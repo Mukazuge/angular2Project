@@ -1,45 +1,29 @@
+doctype html
 section
     form.form-group(#speechForm='ngForm' '(ngSubmit)'='submitSpeech(speechForm)' novalidate)
-        .card
-            .card-header.text-capitalize speech editor
+        .card(*ngIf='!(selectedSpeech.id || isCreating)')
+            .card-block.p-5
+              .text-center
+                .fa.fa-floppy-o.fa-5x.p-5.text-muted
+                h1 Speech Editor
+                p.text-muted
+                  | This is a simple text editor, made in Angular.io and Pug.
+                .p-3
+                  p You can download this app from GitHub:
+                  p
+                    a(href="https://github.com/Mukazuge/angular2project", target="_blank")
+                      span.fa-stack.fa-lg
+                        i.fa.fa-circle.fa-stack-2x
+                        i.fa.fa-github.fa-stack-1x.fa-inverse
+
+        .card(*ngIf='selectedSpeech.id || isCreating')
+            h3.card-header.text-capitalize speech editor
                 button.btn.btn-primary.float-right(type='button')
                     span.pr-2
                         i.fa.fa-share-alt
                     | Share
-            .card-block
-                .form-group
-                    label Start writing your speech
-                    textarea.form-control(placeholder='Ex. Join me and my team to help you break through all adversity.'
-                        name='speechContent'
-                        rows='4'
-                        '[(ngModel)]'='setSelectedSpeech.content'
-                        '[disabled]'='!isEditable'
-                        required)
 
-                .form-group
-                    .row
-                        .col-lg-4
-                            label Author
-                            input.form-control(placeholder='Ex. Kenedy' name='author'
-                                '[(ngModel)]'='setSelectedSpeech.author'
-                                '[disabled]'='!isEditable'
-                                required)
-                        .col-lg-4
-                            label Subject
-                            input.form-control(placeholder='Ex. I have a dream'
-                                name='subject'
-                                '[(ngModel)]'='setSelectedSpeech.subject'
-                                '[disabled]'='!isEditable'
-                                required)
-                        .col-lg-4
-                            label Date
-                            input.form-control(type='date'
-                                name='saveDate'
-                                '[(ngModel)]'='setSelectedSpeech.date'
-                                '[disabled]'='!isEditable'
-                                required)
-
-            .card-footer
+            .card-block.pb-0(*ngIf='selectedSpeech.id || isCreating')
                 div(*ngIf='isEditable')
                     button.btn.btn-success.text-uppercase.float-left
                         span.pr-2
@@ -47,15 +31,58 @@ section
                         | save
 
 
-                    button.btn.btn-danger.text-uppercase.float-right(type='button' '(click)'='isEditable = false')
+                    button.btn.btn-danger.text-uppercase.float-right(type='button' '(click)'='resetFormFlags()')
                         span.pr-2
                             i.fa.fa-ban
                         | cancel
 
                 div(*ngIf='!isEditable')
-                    button.btn.btn-success.text-uppercase.float-left('(click)'='isEditable = true' '[disabled]'='!setSelectedSpeech?.id')
+                    button.btn.btn-success.text-uppercase.float-left('(click)'='isEditable = true' '[disabled]'='!selectedSpeech?.id')
                         span.pr-2
                             i.fa.fa-edit
                         | Edit
 
-                    app-warning-modal('[selectedSpeech]'='setSelectedSpeech' '[disableButton]'='!setSelectedSpeech?.id' '(cleanFrom)'='hasDeleted = $event')
+                    app-warning-modal('[selectedSpeech]'='selectedSpeech' '[disableButton]'='!selectedSpeech?.id' '(cleanFrom)'='resetAll()')
+
+            .card-block.pt-4
+                .form-group(*ngIf='isEditable')
+                    .row
+                        .col-lg-5
+                            label Subject
+                            input.form-control(placeholder='Ex. I have a dream'
+                                name='subject'
+                                '[(ngModel)]'='selectedSpeech.subject'
+                                '[disabled]'='!isEditable'
+                                required)
+
+                        .col-lg-4.pl-0
+                            label Author
+                            input.form-control(placeholder='Ex. Kenedy' name='author'
+                                '[(ngModel)]'='selectedSpeech.author'
+                                '[disabled]'='!isEditable'
+                                required)
+                        .col-lg-3.pl-0
+                            label Date
+                            input.form-control.pr-1.pl-2(type='date'
+                                name='saveDate'
+                                '[(ngModel)]'='selectedSpeech.date'
+                                '[disabled]'='!isEditable'
+                                required)
+
+                .form-group(*ngIf='isEditable')
+                    label Start writing your speech
+                    textarea.form-control(placeholder='Ex. Join me and my team to help you break through all adversity.'
+                        name='speechContent'
+                        rows='10'
+                        '[(ngModel)]'='selectedSpeech.content'
+                        required)
+
+                .form-group(*ngIf='!isEditable')
+                    .mt-2
+                      h3 {{selectedSpeech?.subject}}
+                      p.text-muted By {{selectedSpeech?.author}} ({{selectedSpeech?.date}})
+
+                      p.mt-4(
+                          name='speechContent',
+                          placeholder='Ex. Join me and my team to help you break through all adversity.',
+                          '[innerHTML]'="selectedSpeech.content ? (selectedSpeech.content | escapeHTML) : ''")

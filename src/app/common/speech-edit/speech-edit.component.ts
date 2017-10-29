@@ -12,20 +12,21 @@ import { Subscription } from 'rxjs/Subscription';
 
 export class EditSpeechComponent implements OnInit, OnDestroy {
   @Input()
-  public setSelectedSpeech: SpeechModel;
-  isEditable: false;
-  hasDeleted: false;
+  public selectedSpeech: SpeechModel;
+  speechHolder: SpeechModel;
   subscription: Subscription;
+  isEditable = false;
+  isCreating = false;
 
   constructor(public speechService: SpeechService, public appStateService: AppStateService) {
-    this.setSelectedSpeech = new SpeechModel();
+    this.selectedSpeech = new SpeechModel();
   }
 
   ngOnInit() {
     this.subscription = this.appStateService.editSpeechSubject.subscribe((res) => {
-      console.log('test: ', res);
       this.resetAll();
       this.isEditable = res;
+      this.isCreating = res;
     });
   }
 
@@ -34,15 +35,13 @@ export class EditSpeechComponent implements OnInit, OnDestroy {
   }
 
   submitSpeech(form: any) {
-    console.log(form);
     if (form.valid) {
-      if (this.setSelectedSpeech.id) {
-        this.updateSpeech(this.setSelectedSpeech.id, this.setSelectedSpeech);
+      if (this.selectedSpeech.id) {
+        this.updateSpeech(this.selectedSpeech.id, this.selectedSpeech);
       } else {
-        this.createSpeech(this.setSelectedSpeech);
+        this.createSpeech(this.selectedSpeech);
       }
       this.resetAll();
-      this.isEditable = false;
     } else {
       console.log('no valid form inputs');
     }
@@ -61,6 +60,14 @@ export class EditSpeechComponent implements OnInit, OnDestroy {
   }
 
   resetAll() {
-    this.setSelectedSpeech = new SpeechModel();
+    this.isEditable = false;
+    this.isCreating = false;
+    this.selectedSpeech = new SpeechModel();
+  }
+
+  resetFormFlags() {
+    this.isEditable = false;
+    this.isCreating = false;
+    this.selectedSpeech = new SpeechModel();
   }
 }

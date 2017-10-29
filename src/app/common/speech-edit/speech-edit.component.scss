@@ -1,0 +1,15 @@
+input[type=date] {
+  &.form-control {
+    padding: 0.36rem 1rem;
+  }
+}
+
+.form-control:disabled {
+  background-color: white;
+  border: 0;
+  color: black;
+  cursor: default;
+  opacity: 1;
+  padding-left: 0;
+  padding-right: 0;
+}
