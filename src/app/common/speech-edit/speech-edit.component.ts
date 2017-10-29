@@ -47,7 +47,7 @@ export class EditSpeechComponent implements OnInit, OnDestroy {
     }
   }
 
-  updateSpeech(id: number, payload) {
+  updateSpeech(id: string, payload) {
     this.speechService.updateSpeech(id, payload).subscribe((res) => {
       this.appStateService.publishState(res);
     });

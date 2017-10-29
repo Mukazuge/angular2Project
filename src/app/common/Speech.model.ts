@@ -1,5 +1,5 @@
 export class SpeechModel {
-  id: number;
+  id: string;
   author: string;
   subject: string;
   date: string;

@@ -15,19 +15,25 @@ export class SpeechService {
     });
   }
 
+  getSpeech(id: string) {
+    return this.http.get(this.baseUrl + '/' + id).map(res => {
+      return res.json();
+    });
+  }
+
   searchSpeech(param: string) {
     return this.http.get(this.baseUrl + '/search/' + param).map(res => {
       return res.json();
     });
   }
 
-  deleteSpeech(id: number) {
+  deleteSpeech(id: string) {
     return this.http.delete(this.baseUrl + '/' + id).map(res => {
       return res.json();
     });
   }
 
-  updateSpeech(id: number, payload: SpeechModel) {
+  updateSpeech(id: string, payload: SpeechModel) {
     return this.http.put(this.baseUrl + '/' + id, payload).map(res => {
       return res.json();
     });
