@@ -53,12 +53,9 @@ section
                         | cancel
 
                 div(*ngIf='!isEditable')
-                    button.btn.btn-success.text-uppercase.float-left('(click)'='isEditable = true')
+                    button.btn.btn-success.text-uppercase.float-left('(click)'='isEditable = true' '[disabled]'='!setSelectedSpeech?.id')
                         span.pr-2
                             i.fa.fa-edit
                         | Edit
 
-                    button.btn.btn-danger.text-uppercase.float-right(type='button' '(click)'='deleteSpeech()')
-                        span.pr-2
-                            i.fa.fa-trash-o
-                        | delete
+                    app-warning-modal('[selectedSpeech]'='setSelectedSpeech' '[disableButton]'='!setSelectedSpeech?.id' '(cleanFrom)'='hasDeleted = $event')

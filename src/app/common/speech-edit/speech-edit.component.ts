@@ -14,6 +14,7 @@ export class EditSpeechComponent implements OnInit, OnDestroy {
   @Input()
   public setSelectedSpeech: SpeechModel;
   isEditable: false;
+  hasDeleted: false;
   subscription: Subscription;
 
   constructor(public speechService: SpeechService, public appStateService: AppStateService) {
@@ -22,7 +23,7 @@ export class EditSpeechComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.appStateService.editSpeechSubject.subscribe((res) => {
-      console.log(res);
+      console.log('test: ', res);
       this.resetAll();
       this.isEditable = res;
     });
@@ -40,21 +41,10 @@ export class EditSpeechComponent implements OnInit, OnDestroy {
       } else {
         this.createSpeech(this.setSelectedSpeech);
       }
+      this.resetAll();
+      this.isEditable = false;
     } else {
       console.log('no valid form inputs');
-    }
-  }
-
-  deleteSpeech() {
-    if (this.setSelectedSpeech.id) {
-      this.speechService.deleteSpeech(this.setSelectedSpeech.id).subscribe((res) => {
-        console.log('deleting: ', res);
-        this.appStateService.publishState(res);
-      }, error => {
-        console.log('error: ', error);
-      });
-    } else {
-      console.log('select a field first!');
     }
   }
 

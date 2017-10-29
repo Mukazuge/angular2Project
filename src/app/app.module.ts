@@ -15,6 +15,7 @@ import { EditSpeechComponent } from './common/speech-edit/speech-edit.component'
 import { SpeechService } from './common/speech.service';
 import { HttpModule } from '@angular/http';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome';
+import { WarningModalComponent } from './common/warning-modal.component/warning-modal.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome';
     PageNotFoundComponent,
     SearchComponent,
     SpeechListComponent,
-    EditSpeechComponent
+    EditSpeechComponent,
+    WarningModalComponent
   ],
   providers: [
     AppStateService,
