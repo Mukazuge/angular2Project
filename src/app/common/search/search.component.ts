@@ -12,10 +12,14 @@ export class SearchComponent {
   @Input()
   public searchPlaceHolder = 'Search';
   search = null;
+  @Output() update = new EventEmitter<string>();
 
-  constructor(private appStateService: AppStateService, public speechService: SpeechService) {}
+  constructor(private appStateService: AppStateService, public speechService: SpeechService) {
+    this.update.emit('');
+  }
 
   doSearch(param: any) {
+    this.update.emit(param);
     if (param) {
       this.findSpeech(param);
     } else {
@@ -31,12 +35,9 @@ export class SearchComponent {
 
   findSpeech(searchParam: string) {
     this.speechService.searchSpeech(searchParam).subscribe((res) => {
-      console.log(res);
-      if (res) {
-        this.appStateService.publishState(res);
-      } else {
-        console.log('id not Found: ', res);
-      }
+      this.appStateService.publishState(res);
+    }, (error) => {
+      this.appStateService.publishState([]);
     });
   }
 }

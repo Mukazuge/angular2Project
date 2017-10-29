@@ -1,5 +1,10 @@
 form.d-flex(#searchForm='ngForm' '(ngSubmit)'='doSearch(search)')
-    .input-group
-      input.form-control.text-center('[placeholder]'='searchPlaceHolder' name='search' '[(ngModel)]'='search' '(change)'='doSearch(search)')
-      span.input-group-addon
-        i.fa.fa-search(aria-hidden='true')
+    .input-group.inner-addon
+        span.input-group-addon.right-addon
+            i.fa.fa-search(aria-hidden='true')
+        input.form-control(
+            '(change)'='doSearch(search)'
+            '[(ngModel)]'='search',
+            '[placeholder]'='searchPlaceHolder',
+            name='search',
+            autocomplete='off')
