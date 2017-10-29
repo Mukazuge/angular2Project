@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import { AppStateService } from '../app-state.service';
 import { SpeechModel } from '../Speech.model';
@@ -11,6 +11,8 @@ import { SpeechService } from '../speech.service';
 })
 
 export class WarningModalComponent {
+  @Output()
+  public cleanFrom: EventEmitter<any> = new EventEmitter();
   @Input()
   public selectedSpeech: SpeechModel;
   @Input()
@@ -30,7 +32,6 @@ export class WarningModalComponent {
       this.closeResult = `Close with: ${res}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      console.log(this.closeResult);
     });
   }
 
@@ -48,6 +49,7 @@ export class WarningModalComponent {
     if (this.selectedSpeech.id) {
       this.speechService.deleteSpeech(this.selectedSpeech.id).subscribe(() => {
         this.appStateService.publishState(true);
+        this.cleanFrom.emit();
         this.modalRef.close();
       }, error => {
         console.log('error: ', error);

@@ -17,5 +17,7 @@ ng-template(#warningModal let-c='close' let-d='dismiss')
                 i.fa.fa-trash-o
             | delete
 
-        button.btn.btn-outline-dark(type='button', (click)="c('Close click')") Close
-
+        button.btn.btn-secondary(type='button', (click)="c('Close click')")
+            span.pr-2
+                i.fa.fa-ban
+            | cancel
