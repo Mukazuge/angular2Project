@@ -28,6 +28,7 @@ export class WarningModalComponent {
 
   openModal(modal) {
     this.modalRef = this.modalService.open(modal);
+    // for future posible features
     this.modalRef.result.then((res) => {
       this.closeResult = `Close with: ${res}`;
     }, (reason) => {

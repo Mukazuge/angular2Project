@@ -5,10 +5,9 @@ button.btn.btn-danger.text-uppercase.float-right(type='button', (click)='openMod
     | delete
 
 ng-template(#warningModal let-c='close' let-d='dismiss')
-    .modal-header
-        h4.modal-title Warning
-        button.close(type='button', aria-label='Close', (click)="d('Cross click')")
-            span(aria-hidden='true') ×
+    .modal-header.bg-danger.justify-content-start
+        .fa.fa-exclamation-triangle.fa-2x.text-white.mr-2
+        h4.modal-title.text-white Warning!
     .modal-body
         p You are about to delete a Speech, are you sure you want to do this?
     .modal-footer
