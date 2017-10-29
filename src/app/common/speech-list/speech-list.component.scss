@@ -1,19 +1,7 @@
 #speech-list {
   .active {
-    .author, .subject {
-      color: white;
-    }
-  }
-
-  .author {
-    color: #333;
-    display: block;
-    font-size: 14px;
-  }
-
-  .subject{
-    color: #666;
-    display: block;
-    font-size: 12px
+    background: #eee;
+    color: black;
+    border-color: #eee;
   }
 }

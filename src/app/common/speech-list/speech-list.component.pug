@@ -1,18 +1,35 @@
 section#speech-list
-    .card
-        .card-header.p-0
-            button.btn.btn-primary.btn-block.text-uppercase('(click)'='onCreateSpeech()')
-                span.pr-2
-                    i.fa.fa-plus
-                | create
+    .card.border-0
+        .card-block.p-0.border-0
+            .mb-2
+              button.btn.btn-primary.btn-block.text-uppercase('(click)'='onCreateSpeech()')
+                  span.pr-2
+                      i.fa.fa-plus
+                  | create
+            .mb-2
+                app-search('(update)'='updateSearchText($event)')
 
-        ul.list-group
-            li.list-group-item(
-                *ngFor='let speech of speeches',
-                '(click)'='selectSpeech(speech)',
-                '[ngClass]'="{'active': speech === selectedSpeech}")
-                    .author Author: {{speech.author}}
-                    .subject Subject: {{speech.subject}}
+        .card-block.card.pt-4.text-center(*ngIf="speeches.length < 1")
+            .fa.fa-exclamation-triangle.fa-3x.text-danger
+            h4.pt-3 Not Found!
+            p.text-muted(*ngIf="!searchText")
+                | There are no speeches. Please click the blue
+                | button to create one at the top.
+            p.text-muted(*ngIf="searchText")
+                | There are no search results about "
+                kbd.bg-danger.text-white {{ searchText }}
+                | ".
 
-        .card-footer.p-1
-            app-search('(onSearch)'='onSearch($event)')
+        .card-block.p-0.border-0(*ngIf="speeches.length > 0")
+            ul.list-group.text-muted
+                li.list-group-item.p-2(
+                    *ngFor='let speech of speeches',
+                    '(click)'='selectSpeech(speech)',
+                    '[ngClass]'="{'active': speech === selectedSpeech}")
+                        .d-flex.w-100.justify-content-between
+                            h6.mb-1 {{speech.subject}}
+                            small.text-muted ({{speech.date.split("-")[0]}})
+
+                        .d-flex.w-100.justify-content-between.text-muted
+                            small.mb-1 {{speech.author}}
+                            small {{speech.views}} views

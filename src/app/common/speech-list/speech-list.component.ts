@@ -13,6 +13,8 @@ export class SpeechListComponent {
   public getSelectedSpeech: EventEmitter<any> = new EventEmitter();
   @Input()
   public speeches: Array<SpeechModel> = [];
+  public searchText: string;
+
   selectedSpeech: SpeechModel;
 
   constructor(public appStateService: AppStateService) {}
@@ -22,10 +24,8 @@ export class SpeechListComponent {
     this.getSelectedSpeech.emit(speech);
   }
 
-  onSearch(event: any) {
-    if (event.searchParam !== '') {
-      console.log(event.searchParam);
-    }
+  updateSearchText(event: any) {
+    this.searchText = event;
   }
 
   onCreateSpeech() {
