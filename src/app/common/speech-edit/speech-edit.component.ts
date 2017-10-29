@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { SpeechModel } from '../Speech.model';
 import { SpeechService } from '../speech.service';
 import { AppStateService } from '../app-state.service';
@@ -11,9 +11,10 @@ import { Subscription } from 'rxjs/Subscription';
 })
 
 export class EditSpeechComponent implements OnInit, OnDestroy {
+  @Output()
+  public bulkList: EventEmitter<any> = new EventEmitter();
   @Input()
   public selectedSpeech: SpeechModel;
-  speechHolder: SpeechModel;
   subscription: Subscription;
   isEditable = false;
   isCreating = false;
@@ -50,6 +51,7 @@ export class EditSpeechComponent implements OnInit, OnDestroy {
   updateSpeech(id: string, payload) {
     this.speechService.updateSpeech(id, payload).subscribe((res) => {
       this.appStateService.publishState(res);
+      this.bulkList.emit(true);
     });
   }
 

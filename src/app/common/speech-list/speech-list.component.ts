@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { SpeechModel } from '../Speech.model';
 import { AppStateService } from '../app-state.service';
-import {SpeechService} from "../speech.service";
+import { SpeechService } from '../speech.service';
 
 @Component({
   selector: 'app-speech-list',
@@ -23,8 +23,8 @@ export class SpeechListComponent {
   selectSpeech(speech: SpeechModel) {
     this.selectedSpeech = speech;
     this.speechService.getSpeech(speech.id).subscribe((res) => {
-      console.log('on getSpeech: ', res);
       this.getSelectedSpeech.emit(res);
+      this.appStateService.publishEditSpeech(false);
     });
   }
 
