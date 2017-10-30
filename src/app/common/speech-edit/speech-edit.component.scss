@@ -4,12 +4,17 @@ input[type=date] {
   }
 }
 
-.form-control:disabled {
-  background-color: white;
-  border: 0;
-  color: black;
-  cursor: default;
-  opacity: 1;
-  padding-left: 0;
-  padding-right: 0;
+.form-control {
+  text-overflow: ellipsis;
+  text-align: center;
+
+  &:disabled {
+    background-color: white;
+    border: 0;
+    color: black;
+    cursor: default;
+    opacity: 1;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }

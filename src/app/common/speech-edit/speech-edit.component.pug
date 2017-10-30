@@ -47,7 +47,7 @@ section
             .card-block.pl-3.pr-3.pt-4
                 .form-group(*ngIf='isEditable')
                     .row
-                        .col-lg-5
+                        .col-lg-4
                             label Subject
                             input.form-control(placeholder='Ex. I have a dream'
                                 name='subject'
@@ -55,13 +55,14 @@ section
                                 '[disabled]'='!isEditable'
                                 required)
 
-                        .col-lg-4.pl-0
+                        .col-lg-4
                             label Author
                             input.form-control(placeholder='Ex. Kenedy' name='author'
                                 '[(ngModel)]'='selectedSpeech.author'
                                 '[disabled]'='!isEditable'
                                 required)
-                        .col-lg-3.pl-0
+                            
+                        .col-lg-4
                             label Date
                             input.form-control.pr-1.pl-2(type='date'
                                 name='saveDate'
