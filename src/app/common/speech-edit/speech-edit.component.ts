@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewContainerRef} from '@angular/core';
 import { SpeechModel } from '../Speech.model';
 import { SpeechService } from '../speech.service';
 import { AppStateService } from '../app-state.service';
 import { Subscription } from 'rxjs/Subscription';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-edit-speech',
@@ -19,7 +20,9 @@ export class EditSpeechComponent implements OnInit, OnDestroy {
   isEditable = false;
   isCreating = false;
 
-  constructor(public speechService: SpeechService, public appStateService: AppStateService) {
+  constructor(public speechService: SpeechService,
+              public appStateService: AppStateService,
+              public toastr: ToastsManager) {
     this.selectedSpeech = new SpeechModel();
   }
 
@@ -39,8 +42,10 @@ export class EditSpeechComponent implements OnInit, OnDestroy {
     if (form.valid) {
       if (this.selectedSpeech.id) {
         this.updateSpeech(this.selectedSpeech.id, this.selectedSpeech);
+        this.toastr.success('Speech updated', 'Success!');
       } else {
         this.createSpeech(this.selectedSpeech);
+        this.toastr.success('Speech created', 'Success!');
       }
       this.resetAll();
     } else {
@@ -62,12 +67,6 @@ export class EditSpeechComponent implements OnInit, OnDestroy {
   }
 
   resetAll() {
-    this.isEditable = false;
-    this.isCreating = false;
-    this.selectedSpeech = new SpeechModel();
-  }
-
-  resetFormFlags() {
     this.isEditable = false;
     this.isCreating = false;
     this.selectedSpeech = new SpeechModel();

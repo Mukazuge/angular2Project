@@ -1,8 +1,9 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { AppStateService } from '../app-state.service';
 import { SpeechModel } from '../Speech.model';
 import { SpeechService } from '../speech.service';
+import {ToastsManager } from 'ng2-toastr';
 
 @Component({
   selector: 'app-warning-modal',
@@ -22,7 +23,8 @@ export class WarningModalComponent {
 
   constructor(private modalService: NgbModal,
     public appStateService: AppStateService,
-    public speechService: SpeechService) {
+    public speechService: SpeechService,
+    public toastr: ToastsManager) {
     this.selectedSpeech = new SpeechModel();
   }
 
@@ -52,6 +54,7 @@ export class WarningModalComponent {
         this.appStateService.publishState(true);
         this.cleanFrom.emit();
         this.modalRef.close();
+        this.toastr.error('Speech deleted', 'Success!');
       }, error => {
         console.log('error: ', error);
       });
