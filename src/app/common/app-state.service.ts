@@ -12,7 +12,7 @@ export class AppStateService {
     this.subject.next(data);
   }
 
-  public publishEditSpeech(data: boolean) {
+  public publishEditSpeech(data: any) {
     this.editSpeechSubject.next(data);
   }
 }
