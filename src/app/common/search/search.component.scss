@@ -17,3 +17,7 @@ form {
     z-index: 5;
   }
 }
+
+.form-control:focus {
+  box-shadow: none;
+}

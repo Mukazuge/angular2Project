@@ -4,9 +4,17 @@ input[type=date] {
   }
 }
 
+button:focus {
+  outline: none;
+}
+
 .form-control {
   text-overflow: ellipsis;
   text-align: center;
+
+  &:focus {
+    box-shadow: none;
+  }
 
   &:disabled {
     background-color: white;
