@@ -48,8 +48,7 @@ export class EditSpeechComponent implements OnInit, OnDestroy {
         this.toastr.success('Speech created', 'Success!');
       }
       this.resetAll();
-    } else {
-      console.log('no valid form inputs');
+      form.resetForm();
     }
   }
 

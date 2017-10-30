@@ -49,17 +49,14 @@ export class WarningModalComponent {
   }
 
   deleteSpeech() {
-    if (this.selectedSpeech.id) {
       this.speechService.deleteSpeech(this.selectedSpeech.id).subscribe(() => {
         this.appStateService.publishState(true);
         this.cleanFrom.emit();
         this.modalRef.close();
-        this.toastr.error('Speech deleted', 'Success!');
+        this.toastr.success('Speech deleted', 'Success!');
       }, error => {
-        console.log('error: ', error);
+        this.toastr.error('Request failed due to a server error', 'Error!');
+        this.modalRef.close();
       });
-    } else {
-      console.log('select a field first!');
-    }
   }
 }

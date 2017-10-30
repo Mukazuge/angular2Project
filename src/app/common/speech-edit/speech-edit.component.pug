@@ -17,9 +17,10 @@ section
                         i.fa.fa-github.fa-stack-1x.fa-inverse
 
         .card(*ngIf='selectedSpeech.id || isCreating')
+
             .card-header
                 span.h3 Speech Editor
-                share-container.float-right(direction='horizontal',
+                share-container.float-right(*ngIf='selectedSpeech?.id' direction='horizontal',
                     '[expandable]'='false',
                     '[platforms]'="['reddit','twitter','facebook','mail']")
 
@@ -49,34 +50,43 @@ section
                     .row
                         .col-lg-4
                             label Subject
-                            input.form-control(placeholder='Ex. I have a dream'
+                            input.form-control(#subjectInput='ngModel'
+                                placeholder='Ex. I have a dream'
                                 name='subject'
                                 '[(ngModel)]'='selectedSpeech.subject'
                                 '[disabled]'='!isEditable'
                                 required)
+                            span.ml-1.text-danger(*ngIf='subjectInput.invalid && speechForm.submitted') Subject required
 
                         .col-lg-4
                             label Author
-                            input.form-control(placeholder='Ex. Kenedy' name='author'
+                            input.form-control(#authorInput='ngModel'
+                                placeholder='Ex. Kenedy'
+                                name='author'
                                 '[(ngModel)]'='selectedSpeech.author'
                                 '[disabled]'='!isEditable'
                                 required)
-                            
+                            span.ml-1.text-danger(*ngIf='authorInput.invalid && speechForm.submitted') Author required
+
                         .col-lg-4
                             label Date
-                            input.form-control.pr-1.pl-2(type='date'
+                            input.form-control.pr-1.pl-2(#dateInput='ngModel'
+                                type='date'
                                 name='saveDate'
                                 '[(ngModel)]'='selectedSpeech.date'
                                 '[disabled]'='!isEditable'
                                 required)
+                            span.ml-1.text-danger(*ngIf='dateInput.invalid && speechForm.submitted') Date required
 
                 .form-group(*ngIf='isEditable')
                     label Start writing your speech
-                    textarea.form-control(placeholder='Ex. Join me and my team to help you break through all adversity.'
+                    textarea.form-control(#contentInput='ngModel'
+                        placeholder='Ex. Join me and my team to help you break through all adversity.'
                         name='speechContent'
                         rows='10'
                         '[(ngModel)]'='selectedSpeech.content'
                         required)
+                    span.ml-1.text-danger(*ngIf='contentInput.invalid && speechForm.submitted') Speech Content required
 
                 .form-group(*ngIf='!isEditable')
                     .mt-2
