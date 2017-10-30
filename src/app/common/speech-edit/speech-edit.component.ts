@@ -48,7 +48,6 @@ export class EditSpeechComponent implements OnInit, OnDestroy {
     console.log(this.dateModel);
     if (form.valid) {
       this.selectedSpeech.date = `${this.dateModel.year}-${this.dateModel.month}-${this.dateModel.day}`;
-      console.log(this.selectedSpeech.date);
       if (this.selectedSpeech.id) {
         this.updateSpeech(this.selectedSpeech.id, this.selectedSpeech);
         this.toastr.success('Speech updated', 'Success!');
