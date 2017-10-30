@@ -23,8 +23,17 @@ export class SpeechListComponent {
   selectSpeech(speech: SpeechModel) {
     this.selectedSpeech = speech;
     this.speechService.getSpeech(speech.id).subscribe((res) => {
+      const dateSplit = res.date.split('-');
+      const dateModel = {
+        year: Number(dateSplit[0]),
+        month: Number(dateSplit[1]),
+        day: Number(dateSplit[2])
+      };
       this.getSelectedSpeech.emit(res);
-      this.appStateService.publishEditSpeech(false);
+      this.appStateService.publishEditSpeech({
+        editable: false,
+        dateModel: dateModel
+      });
     });
   }
 
@@ -34,6 +43,9 @@ export class SpeechListComponent {
 
   onCreateSpeech() {
     // call app state to create a speech
-    this.appStateService.publishEditSpeech(true);
+    this.appStateService.publishEditSpeech({
+      editable: true,
+      dateModel: {year: 0, month: 0, day: 0}
+    });
   }
 }

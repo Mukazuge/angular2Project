@@ -70,13 +70,20 @@ section
 
                         .col-lg-4
                             label Date
-                            input.form-control.pr-1.pl-2(#dateInput='ngModel'
-                                type='date'
-                                name='saveDate'
-                                '[(ngModel)]'='selectedSpeech.date'
-                                '[disabled]'='!isEditable'
-                                required)
-                            span.ml-1.text-danger(*ngIf='dateInput.invalid && speechForm.submitted') Date required
+                            .input-group.form-control.p-0
+                                 input#datePicker.form-control.border-0.pr-1.pl-2(#d='ngbDatepicker',
+                                     #dateInput='ngModel'
+                                     placeholder='yyyy-mm-dd'
+                                     name='date'
+                                     '[(ngModel)]'='dateModel'
+                                     '[disabled]'='!isEditable'
+                                     ngbDatepicker
+                                     required)
+                                 button.border-0.bg-transparent-w-100('(click)'='d.toggle()', type='button')
+                                     span
+                                         i.fa.fa-calendar-check-o.text-dark(aria-hidden='true')
+
+                            span.ml-1.text-danger(*ngIf='dateInput.invalid && speechForm.submitted') Invalid Date
 
                 .form-group(*ngIf='isEditable')
                     label Start writing your speech

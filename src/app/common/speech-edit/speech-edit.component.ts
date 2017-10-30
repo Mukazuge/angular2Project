@@ -19,6 +19,11 @@ export class EditSpeechComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   isEditable = false;
   isCreating = false;
+  dateModel = {
+    year: 0,
+    month: 0,
+    day: 0
+  };
 
   constructor(public speechService: SpeechService,
               public appStateService: AppStateService,
@@ -29,8 +34,9 @@ export class EditSpeechComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.appStateService.editSpeechSubject.subscribe((res) => {
       this.resetAll();
-      this.isEditable = res;
-      this.isCreating = res;
+      this.isEditable = res.editable;
+      this.isCreating = res.editable;
+      this.dateModel = res.dateModel;
     });
   }
 
@@ -39,7 +45,10 @@ export class EditSpeechComponent implements OnInit, OnDestroy {
   }
 
   submitSpeech(form: any) {
+    console.log(this.dateModel);
     if (form.valid) {
+      this.selectedSpeech.date = `${this.dateModel.year}-${this.dateModel.month}-${this.dateModel.day}`;
+      console.log(this.selectedSpeech.date);
       if (this.selectedSpeech.id) {
         this.updateSpeech(this.selectedSpeech.id, this.selectedSpeech);
         this.toastr.success('Speech updated', 'Success!');
