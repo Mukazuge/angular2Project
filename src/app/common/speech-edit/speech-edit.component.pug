@@ -17,13 +17,13 @@ section
                         i.fa.fa-github.fa-stack-1x.fa-inverse
 
         .card(*ngIf='selectedSpeech.id || isCreating')
-            h3.card-header.text-capitalize speech editor
-                button.btn.btn-primary.float-right(type='button')
-                    span.pr-2
-                        i.fa.fa-share-alt
-                    | Share
+            .card-header
+                span.h3 Speech Editor
+                share-container.float-right(direction='horizontal',
+                    '[expandable]'='false',
+                    '[platforms]'="['reddit','twitter','facebook','mail']")
 
-            .card-block.pb-0(*ngIf='selectedSpeech.id || isCreating')
+            .card-block.p-3.pb-0(*ngIf='selectedSpeech.id || isCreating')
                 div(*ngIf='isEditable')
                     button.btn.btn-success.text-uppercase.float-left
                         span.pr-2
@@ -44,7 +44,7 @@ section
 
                     app-warning-modal('[selectedSpeech]'='selectedSpeech' '[disableButton]'='!selectedSpeech?.id' '(cleanFrom)'='resetAll()')
 
-            .card-block.pt-4
+            .card-block.pl-3.pr-3.pt-4
                 .form-group(*ngIf='isEditable')
                     .row
                         .col-lg-5
