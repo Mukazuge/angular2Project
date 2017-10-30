@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 import { ShareModule } from 'ng2share/share.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -31,7 +32,8 @@ import { EscapeHtmlPipe } from './common/escape-html.pipe';
     Angular2FontawesomeModule,
     ShareModule,
     BrowserAnimationsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    ToastModule.forRoot()
   ],
   declarations: [
     AppComponent,
